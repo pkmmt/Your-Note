@@ -100,7 +100,7 @@ def exam_interface():
     if 'exam_in_progress' not in st.session_state:
         st.session_state.exam_in_progress = False
     
-    # Tabs for different functionalities
+    # tabs for different functionalities
     tab1, tab2, tab3 = st.tabs(["Take Exam", "Review Results", "Upload Exam"])
     
     # Exam Tab
@@ -120,7 +120,7 @@ def exam_interface():
         else:
             st.info("No exam results to display")
     
-    # Upload Exam Tab
+    # upload Exam Tab
     with tab3:
         upload_exam()
 
@@ -128,7 +128,7 @@ def display_exam():
     exam = st.session_state.current_exam
     st.header(exam.title)
     
-    # Display timer
+    # display timer
     time_elapsed = datetime.now() - st.session_state.start_time
     time_remaining = exam.duration_minutes * 60 - time_elapsed.total_seconds()
     
@@ -140,7 +140,7 @@ def display_exam():
     st.progress(time_remaining / (exam.duration_minutes * 60))
     st.write(f"Time remaining: {int(time_remaining // 60)} minutes {int(time_remaining % 60)} seconds")
     
-    # Display questions
+    # display questions
     answers = {}
     for i, question in enumerate(exam.questions):
         st.subheader(f"Question {i + 1} ({question.marks} marks)")
